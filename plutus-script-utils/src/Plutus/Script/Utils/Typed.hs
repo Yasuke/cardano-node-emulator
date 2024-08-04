@@ -47,11 +47,13 @@ import PlutusLedgerApi.V1 qualified as PV1
 import PlutusLedgerApi.V1.Address qualified as PV1
 import PlutusLedgerApi.V2 qualified as PV2
 import PlutusLedgerApi.V3 qualified as PV3
-import PlutusTx.Prelude (BuiltinData, BuiltinString, check, trace)
 
-type UntypedValidator = BuiltinData -> BuiltinData -> BuiltinData -> ()
-type UntypedMintingPolicy = BuiltinData -> BuiltinData -> ()
-type UntypedStakeValidator = BuiltinData -> BuiltinData -> ()
+import PlutusTx
+import PlutusTx.Prelude (BuiltinUnit, BuiltinData, BuiltinString, check, trace)
+
+type UntypedValidator = BuiltinData -> BuiltinData -> BuiltinData -> BuiltinUnit
+type UntypedMintingPolicy = BuiltinData -> BuiltinData -> BuiltinUnit
+type UntypedStakeValidator = BuiltinData -> BuiltinData -> BuiltinUnit
 
 data Any
   deriving stock (Eq, Show, Generic)
