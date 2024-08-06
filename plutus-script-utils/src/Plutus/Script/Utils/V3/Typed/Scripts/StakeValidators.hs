@@ -29,8 +29,7 @@ import PlutusLedgerApi.V3 (
   txInInfoResolved,
  )
 import PlutusLedgerApi.V3.Contexts (
-  ScriptContext (..)),
-  ScriptPurpose (Certifying, Rewarding),
+  ScriptContext (..),
   TxInfo (TxInfo, txInfoInputs),
  )
 import PlutusTx qualified
