@@ -17,7 +17,7 @@ import PlutusLedgerApi.V1.Value (TokenName, Value)
 import PlutusLedgerApi.V1.Value qualified as Value
 import PlutusTx qualified
 import PlutusTx.Prelude (BuiltinUnit(..))
-
+import PlutusCore.StdLib.Data.Unit (unitval)
 import Plutus.Script.Utils.V1.Scripts qualified as Scripts
 
 alwaysSucceedValidator :: Ledger.Validator
