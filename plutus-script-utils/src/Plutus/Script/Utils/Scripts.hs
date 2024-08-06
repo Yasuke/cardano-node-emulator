@@ -64,7 +64,8 @@ import GHC.Generics (Generic)
 import PlutusLedgerApi.Common (serialiseCompiledCode)
 import PlutusLedgerApi.V1 qualified as PV1
 import PlutusLedgerApi.V1.Bytes (LedgerBytes (LedgerBytes))
-import PlutusTx (BuiltinUnit, CompiledCode, makeLift)
+import PlutusTx.Prelude (BuiltinUnit)
+import PlutusTx (CompiledCode, makeLift)
 import PlutusTx qualified
 import PlutusTx.Builtins (BuiltinData)
 import PlutusTx.Builtins qualified as Builtins
