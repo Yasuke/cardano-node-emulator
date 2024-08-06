@@ -16,13 +16,13 @@ import Plutus.Script.Utils.Scripts qualified as Ledger
 import PlutusLedgerApi.V1.Value (TokenName, Value)
 import PlutusLedgerApi.V1.Value qualified as Value
 import PlutusTx qualified
-import PlutusTx.Prelude (BuiltinUnit(..))
+import PlutusTx.Prelude (BuiltinUnit(..), check)
 import PlutusCore.StdLib.Data.Unit (unitval)
 import Plutus.Script.Utils.V1.Scripts qualified as Scripts
 
 alwaysSucceedValidator :: Ledger.Validator
 alwaysSucceedValidator =
-  Ledger.mkValidatorScript $$(PlutusTx.compile [||\_ _ _ -> PlutusTx.check True||])
+  Ledger.mkValidatorScript $$(PlutusTx.compile [||\_ _ _ -> check True||])
 
 alwaysSucceedValidatorVersioned :: Ledger.Versioned Ledger.Validator
 alwaysSucceedValidatorVersioned = Ledger.Versioned alwaysSucceedValidator Ledger.PlutusV1
@@ -32,7 +32,7 @@ alwaysSucceedValidatorHash = Scripts.validatorHash alwaysSucceedValidator
 
 alwaysSucceedPolicy :: Ledger.MintingPolicy
 alwaysSucceedPolicy =
-  Ledger.mkMintingPolicyScript $$(PlutusTx.compile [||\_ _ -> PlutusTx.check True||])
+  Ledger.mkMintingPolicyScript $$(PlutusTx.compile [||\_ _ -> check True||])
 
 alwaysSucceedPolicyVersioned :: Ledger.Versioned Ledger.MintingPolicy
 alwaysSucceedPolicyVersioned = Ledger.Versioned alwaysSucceedPolicy Ledger.PlutusV1
