@@ -29,7 +29,7 @@ import PlutusLedgerApi.V3 (
   txInInfoResolved,
  )
 import PlutusLedgerApi.V3.Contexts (
-  ScriptContext (..),
+  ScriptContext (..)),
   ScriptPurpose (Certifying, Rewarding),
   TxInfo (TxInfo, txInfoInputs),
  )
@@ -54,11 +54,8 @@ mkForwardingStakeValidator vshsh =
 
 {-# INLINEABLE forwardToValidator #-}
 forwardToValidator :: ValidatorHash -> () -> ScriptContext -> Bool
-forwardToValidator (ValidatorHash h) _ ScriptContext{scriptContextTxInfo = TxInfo{txInfoInputs}, scriptContextPurpose} =
+forwardToValidator (ValidatorHash h) _ ScriptContext{scriptContextTxInfo = TxInfo{txInfoInputs}} =
   let checkHash TxOut{txOutAddress = Address{addressCredential = ScriptCredential (ScriptHash vh)}} = vh == h
       checkHash _ = False
       result = any (checkHash . txInInfoResolved) txInfoInputs
-   in case scriptContextPurpose of
-        Rewarding _ -> result
-        Certifying _ _ -> result
-        _ -> False
+  in False
