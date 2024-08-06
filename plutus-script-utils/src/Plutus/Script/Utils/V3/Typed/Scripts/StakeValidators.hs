@@ -29,7 +29,7 @@ import PlutusLedgerApi.V3 (
   txInInfoResolved,
  )
 import PlutusLedgerApi.V3.Contexts (
-  ScriptContext (ScriptContext, scriptContextPurpose, scriptContextTxInfo),
+  ScriptContext (ScriptContext(..)),
   ScriptPurpose (Certifying, Rewarding),
   TxInfo (TxInfo, txInfoInputs),
  )
