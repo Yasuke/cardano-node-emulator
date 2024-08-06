@@ -54,7 +54,7 @@ mkForwardingMintingPolicy vshsh =
     `PlutusTx.unsafeApplyCode` PlutusTx.liftCode plcVersion110 vshsh
 
 {-# INLINEABLE forwardToValidator #-}
-forwardToValidator :: ValidatorHash -> () -> PV3.ScriptContext -> Bool
+forwardToValidator :: ValidatorHash -> PlutusTx.BuiltinUnit -> PV3.ScriptContext -> Bool
 forwardToValidator (ValidatorHash h) _ ScriptContext{scriptContextTxInfo = TxInfo{txInfoInputs}, scriptContextPurpose = Minting _} =
   let checkHash TxOut{txOutAddress = Address{addressCredential = ScriptCredential (ScriptHash vh)}} = vh == h
       checkHash _ = False
