@@ -34,7 +34,7 @@ import PlutusLedgerApi.V1.Contexts (
 import PlutusLedgerApi.V1.Contexts qualified as PV1
 import PlutusLedgerApi.V1.Tx (TxOut (TxOut, txOutAddress))
 import PlutusTx qualified
-import PlutusTx.Prelude (Bool (False), any, ($), (.), (==))
+import PlutusTx.Prelude (BuiltinUnit, Bool (False), any, ($), (.), (==))
 
 -- TODO: we should add a TypedMintingPolicy interface here
 
@@ -53,7 +53,7 @@ mkForwardingMintingPolicy vshsh =
     `PlutusTx.unsafeApplyCode` PlutusTx.liftCode plcVersion100 vshsh
 
 {-# INLINEABLE forwardToValidator #-}
-forwardToValidator :: ValidatorHash -> PlutusTx.BuiltinUnit -> PV1.ScriptContext -> Bool
+forwardToValidator :: ValidatorHash -> BuiltinUnit -> PV1.ScriptContext -> Bool
 forwardToValidator (ValidatorHash h) _ ScriptContext{scriptContextTxInfo = TxInfo{txInfoInputs}, scriptContextPurpose = Minting _} =
   let checkHash TxOut{txOutAddress = Address{addressCredential = ScriptCredential (ScriptHash vh)}} = vh == h
       checkHash _ = False
