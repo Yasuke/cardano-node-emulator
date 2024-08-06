@@ -34,7 +34,7 @@ import PlutusLedgerApi.V3.Contexts (
  )
 import PlutusLedgerApi.V3.Contexts qualified as PV3
 import PlutusTx qualified
-import PlutusTx.Prelude (BuiltinUnit, Bool (False), any, ($), (.), (==))
+import PlutusTx.Prelude (Bool (False), any, ($), (.), (==))
 
 -- TODO: we should add a TypedMintingPolicy interface here
 
@@ -53,5 +53,5 @@ mkForwardingMintingPolicy vshsh =
     `PlutusTx.unsafeApplyCode` PlutusTx.liftCode plcVersion110 vshsh
 
 {-# INLINEABLE forwardToValidator #-}
-forwardToValidator :: ValidatorHash -> BuiltinUnit -> PV3.ScriptContext -> Bool
+forwardToValidator :: ValidatorHash -> () -> PV3.ScriptContext -> Bool
 forwardToValidator _ _ _ = False
