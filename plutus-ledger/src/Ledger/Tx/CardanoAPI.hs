@@ -84,7 +84,7 @@ fromCardanoTxInsCollateral C.TxInsCollateralNone = []
 fromCardanoTxInsCollateral (C.TxInsCollateral _ txIns) = txIns
 
 toCardanoDatumWitness :: PV1.Datum -> C.ScriptDatum C.WitCtxTxIn
-toCardanoDatumWitness = C.ScriptDatumForTxIn . toCardanoScriptData . pure . PV1.getDatum
+toCardanoDatumWitness = C.ScriptDatumForTxIn . Just . toCardanoScriptData . PV1.getDatum
 
 type WitnessHeader witctx =
   C.ScriptDatum witctx -> C.ScriptRedeemer -> C.ExecutionUnits -> C.ScriptWitness witctx C.ConwayEra
