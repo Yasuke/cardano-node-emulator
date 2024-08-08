@@ -51,6 +51,7 @@ import Ledger.Tx.CardanoAPI.Internal
 import Ledger.Tx.Internal qualified as P
 import Plutus.Script.Utils.Scripts qualified as PV1
 import PlutusLedgerApi.V1 qualified as PV1
+import Control.Monad (join)
 
 toCardanoMintWitness
   :: PV1.Redeemer
