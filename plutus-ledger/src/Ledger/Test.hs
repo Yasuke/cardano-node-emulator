@@ -22,7 +22,7 @@ import PlutusLedgerApi.V1.Value qualified as Value
 import PlutusLedgerApi.V2 qualified as PV2
 import PlutusLedgerApi.V3 qualified as PV3
 import PlutusTx qualified
-import PlutusTx.Prelude (BuiltinUnit)
+import PlutusTx.Prelude (check, BuiltinUnit)
 import Prelude hiding (not)
 
 someCode
